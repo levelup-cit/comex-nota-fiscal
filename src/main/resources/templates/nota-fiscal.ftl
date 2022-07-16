@@ -2,7 +2,7 @@
 	<loja>314276853</loja>
 	<nat_operacao>Comércio eletrônico</nat_operacao>
 	<pedido>
-		<vlr_total>${(item.valorTotalComDescontos)?string["#,##0.00"]}</vlr_total>
+		<vlr_total>${(pedido.valorTotalComDescontos)?string["#,##0.00"]}</vlr_total>
 		<items>
 			<#list pedido.itens as item>
 			<item>
