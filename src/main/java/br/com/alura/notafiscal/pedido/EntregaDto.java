@@ -2,23 +2,23 @@ package br.com.alura.notafiscal.pedido;
 
 public class EntregaDto {
 
-	private String cep;
+	private String estado;
 	private String enderecoCompleto;
 
 	public EntregaDto() {
 	}
 
-	public EntregaDto(String cep, String enderecoCompleto) {
-		this.cep = cep;
+	public EntregaDto(String estado, String enderecoCompleto) {
+		this.estado = estado;
 		this.enderecoCompleto = enderecoCompleto;
 	}
 
 	public String getCep() {
-		return cep;
+		return estado;
 	}
 
 	public void setCep(String cep) {
-		this.cep = cep;
+		this.estado = cep;
 	}
 
 	public String getEnderecoCompleto() {
@@ -31,7 +31,7 @@ public class EntregaDto {
 
 	@Override
 	public String toString() {
-		return "EntregaDto [cep=" + cep + ", enderecoCompleto=" + enderecoCompleto + "]";
+		return "EntregaDto [cep=" + estado + ", enderecoCompleto=" + enderecoCompleto + "]";
 	}
 
 }

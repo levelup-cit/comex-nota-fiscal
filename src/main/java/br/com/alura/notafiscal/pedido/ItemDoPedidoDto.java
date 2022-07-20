@@ -1,5 +1,7 @@
 package br.com.alura.notafiscal.pedido;
 
+import br.com.alura.notafiscal.pedido.kafka.ItemDePedidoConfirmadoEvent;
+
 import java.math.BigDecimal;
 
 public class ItemDoPedidoDto {
@@ -11,14 +13,20 @@ public class ItemDoPedidoDto {
 	public ItemDoPedidoDto() {
 	}
 
-	public ItemDoPedidoDto(String nome, Integer quantidade, BigDecimal precoUnitario,
-			BigDecimal precoTotalComDescontos) {
-		this.nome = nome;
-		this.quantidade = quantidade;
-		this.precoUnitario = precoUnitario;
+//	public ItemDoPedidoDto(String nome, Integer quantidade, BigDecimal precoUnitario,
+//			BigDecimal precoTotalComDescontos) {
+//		this.nome = nome;
+//		this.quantidade = quantidade;
+//		this.precoUnitario = precoUnitario;
+//	}
+
+	public ItemDoPedidoDto(ItemDePedidoConfirmadoEvent itemDePedidoConfirmadoEvent) {
+		this.nome = itemDePedidoConfirmadoEvent.getProduto();
+		this.quantidade = itemDePedidoConfirmadoEvent.getQuantidade();
+		this.precoUnitario = itemDePedidoConfirmadoEvent.getPrecoUnitario();
 	}
 
-	public String getNome() {
+    public String getNome() {
 		return nome;
 	}
 

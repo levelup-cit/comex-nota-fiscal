@@ -1,8 +1,11 @@
 package br.com.alura.notafiscal.pedido;
 
+import br.com.alura.notafiscal.pedido.kafka.PedidoPagoEvent;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PedidoDto {
 
@@ -14,12 +17,11 @@ public class PedidoDto {
 	public PedidoDto() {
 	}
 
-	public PedidoDto(EntregaDto entrega, ClienteDto cliente, BigDecimal valorTotalComDescontos,
-			List<ItemDoPedidoDto> itens) {
-		this.entrega = entrega;
-		this.cliente = cliente;
-		this.valorTotalComDescontos = valorTotalComDescontos;
-		this.itens = itens;
+	public PedidoDto(PedidoPagoEvent pedidoPagoEvent) {
+		this.entrega = new EntregaDto(pedidoPagoEvent.getEstado(), pedidoPagoEvent.getEnderecoCompleto());
+		this.cliente = new ClienteDto(pedidoPagoEvent.getNomeCliente(), pedidoPagoEvent.getCpfClient());
+		this.valorTotalComDescontos = pedidoPagoEvent.getValorTotal();
+		this.itens = pedidoPagoEvent.getItens().stream().map(ItemDoPedidoDto::new).collect(Collectors.toList());
 	}
 
 	public EntregaDto getEntrega() {
