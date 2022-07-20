@@ -2,7 +2,7 @@ package br.com.alura.notafiscal.pedido;
 
 public class EntregaDto {
 
-	private String cep;
+	private String cep = "N/A";
 	private String enderecoCompleto;
 
 	public EntregaDto() {
