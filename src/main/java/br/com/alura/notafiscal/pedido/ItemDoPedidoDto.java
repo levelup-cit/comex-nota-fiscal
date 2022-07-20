@@ -1,21 +1,22 @@
 package br.com.alura.notafiscal.pedido;
 
+import br.com.alura.notafiscal.ItemDePedidoEvent;
+
 import java.math.BigDecimal;
 
 public class ItemDoPedidoDto {
 
 	private String nome;
-	private Integer quantidade;
+	private long quantidade;
 	private BigDecimal precoUnitario;
 
 	public ItemDoPedidoDto() {
 	}
 
-	public ItemDoPedidoDto(String nome, Integer quantidade, BigDecimal precoUnitario,
-			BigDecimal precoTotalComDescontos) {
-		this.nome = nome;
-		this.quantidade = quantidade;
-		this.precoUnitario = precoUnitario;
+	public ItemDoPedidoDto(ItemDePedidoEvent itemDePedidoEvent) {
+		this.nome = itemDePedidoEvent.getNomeProduto();
+		this.quantidade = itemDePedidoEvent.getQuantidade();
+		this.precoUnitario = itemDePedidoEvent.getPrecoUnitario();
 	}
 
 	public String getNome() {
@@ -26,7 +27,7 @@ public class ItemDoPedidoDto {
 		this.nome = nome;
 	}
 
-	public Integer getQuantidade() {
+	public long getQuantidade() {
 		return quantidade;
 	}
 
